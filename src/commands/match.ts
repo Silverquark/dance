@@ -2,7 +2,7 @@ import { text } from "stream/consumers";
 import * as vscode from "vscode";
 
 import type { Argument, InputOr, RegisterOr } from ".";
-import { insert as apiInsert, Context, deindentLines, edit, indentLines, insertByIndex, insertByIndexWithFullLines, insertFlagsAtEdge, joinLines, keypress, Positions, prompt, replace, replaceByIndex, Selections, Shift, Direction, moveToExcluded } from "../api";
+import { insert as apiInsert, Context, deindentLines, Direction, edit, indentLines, insertByIndex, insertByIndexWithFullLines, insertFlagsAtEdge, joinLines, keypress, Positions, prompt, replace, replaceByIndex, Selections, Shift, moveToExcluded, moveToIncluded } from "../api";
 import type { Register } from "../state/registers";
 import { LengthMismatchError } from "../utils/errors";
 import { insert } from "./edit";
@@ -33,17 +33,36 @@ export async function sorroundreplace(
   const inputFind = await inputOr(() => keypress(_));
   const inputReplace = await inputOr(() => keypress(_));
 
+  const specialCharIndexFind = defaultEnclosingPatternsMatches.findIndex((x => x.some(symbol => symbol === inputFind)));
+
+  let startTextFind = inputFind;
+  let endTextFind = inputFind;
+  if (specialCharIndexFind !== -1) {
+    startTextFind = defaultEnclosingPatternsMatches[specialCharIndexFind][0];
+    endTextFind = defaultEnclosingPatternsMatches[specialCharIndexFind][1];
+  }
+
+  const specialCharIndexReplace = defaultEnclosingPatternsMatches.findIndex((x => x.some(symbol => symbol === inputReplace)));
+
+  let startTextReplace = inputReplace;
+  let endTextReplace = inputReplace;
+  if (specialCharIndexReplace !== -1) {
+    startTextReplace = defaultEnclosingPatternsMatches[specialCharIndexReplace][0];
+    endTextReplace = defaultEnclosingPatternsMatches[specialCharIndexReplace][1];
+  }
+
   const positions = Selections.mapByIndex((_i, selection, document) => {
 
     const pos = Selections.seekFrom(selection, Direction.Backward);
     const pos2 = Selections.seekFrom(selection, Direction.Backward);
 
-    const asdd = moveToExcluded(Direction.Forward, inputFind, pos, document);
-    const asddd = moveToExcluded(Direction.Backward, inputFind, pos2, document);
+    console.warn(startTextFind);
+    const matchForward = moveToExcluded(Direction.Backward, startTextFind, pos2, document);
+    const matchBackward = moveToExcluded(Direction.Forward, endTextFind, pos, document);
 
-    throw new Error("Bla: " + JSON.stringify(selection.active, null, 2) + " " +  JSON.stringify(pos, null, 2)
-    + " " +  JSON.stringify(asdd, null, 2) + " " +  JSON.stringify(asddd, null, 2));
-    return [asdd, asddd];
+    // throw new Error("Bla: " + JSON.stringify(selection.active, null, 2) + " " +  JSON.stringify(pos, null, 2)
+    // + " " +  JSON.stringify(matchBackward, null, 2) + " " +  JSON.stringify(matchForward, null, 2));
+    return [matchBackward, matchForward];
   });
 
   const flatPositions = [...positions.flat()];
@@ -69,8 +88,72 @@ export async function sorroundreplace(
       const balala1 = new vscode.Range(pos[0]!, new vscode.Position(pos[0]!.line, pos[0]?.character! + 1));
       const balala2 = new vscode.Range(pos[1]!, new vscode.Position(pos[1]!.line, pos[1]?.character! - 1));
 
-      editBuilder.replace(balala1 , inputReplace);
-      editBuilder.replace(balala2, inputReplace);
+      editBuilder.replace(balala1, endTextReplace);
+      editBuilder.replace(balala2, startTextReplace);
+
+    }
+  }));
+}
+
+/**
+ * Delete stuff sorround
+ *
+ */
+export async function sorrounddelete(
+  _: Context,
+  selections: readonly vscode.Selection[],
+  inputOr: InputOr<"input", string>,
+) {
+  const inputFind = await inputOr(() => keypress(_));
+
+  const specialCharIndexFind = defaultEnclosingPatternsMatches.findIndex((x => x.some(symbol => symbol === inputFind)));
+
+  let startTextFind = inputFind;
+  let endTextFind = inputFind;
+  if (specialCharIndexFind !== -1) {
+    startTextFind = defaultEnclosingPatternsMatches[specialCharIndexFind][0];
+    endTextFind = defaultEnclosingPatternsMatches[specialCharIndexFind][1];
+  }
+
+  const positions = Selections.mapByIndex((_i, selection, document) => {
+
+    const pos = Selections.seekFrom(selection, Direction.Backward);
+    const pos2 = Selections.seekFrom(selection, Direction.Backward);
+
+    console.warn(startTextFind);
+    const matchForward = moveToExcluded(Direction.Backward, startTextFind, pos2, document);
+    const matchBackward = moveToExcluded(Direction.Forward, endTextFind, pos, document);
+
+    // throw new Error("Bla: " + JSON.stringify(selection.active, null, 2) + " " +  JSON.stringify(pos, null, 2)
+    // + " " +  JSON.stringify(matchBackward, null, 2) + " " +  JSON.stringify(matchForward, null, 2));
+    return [matchBackward, matchForward];
+  });
+
+  const flatPositions = [...positions.flat()];
+
+  // Check if any position of found target is the same
+  // TODO: Optimize. Theres probably an easier/faster way...
+  flatPositions.forEach((outer, i) => {
+    flatPositions.forEach((inner, o) => {
+      if (i === o) {
+        return false;
+      }
+      if (inner?.line === outer?.line && inner?.character === outer?.character) {
+        throw new Error("Cursors overlap for a single sorround pair range");
+      }
+      return;
+    });
+  });
+
+
+  return _.run(() => edit((editBuilder, selections, document) => {
+    for (const pos of positions) {
+
+      const balala1 = new vscode.Range(pos[0]!, new vscode.Position(pos[0]!.line, pos[0]?.character! + 1));
+      const balala2 = new vscode.Range(pos[1]!, new vscode.Position(pos[1]!.line, pos[1]?.character! - 1));
+
+      editBuilder.replace(balala1, "");
+      editBuilder.replace(balala2, "");
 
     }
   }));
@@ -92,13 +175,13 @@ export async function sorround(
   //       bracketsConfig = languageConfig.get<readonly [string, string][]>("brackets");
   // TODO: investigate why this always seems to return null. Static list is good enough for now
 
-  const specialCharIndex = defaultEnclosingPatterns.findIndex((x => x.some(symbol => symbol === input)));
+  const specialCharIndex = defaultEnclosingPatternsMatches.findIndex((x => x.some(symbol => symbol === input)));
 
   let startText;
   let endText;
   if (specialCharIndex !== -1) {
-    startText = defaultEnclosingPatterns[specialCharIndex][0];
-    endText = defaultEnclosingPatterns[specialCharIndex][1];
+    startText = defaultEnclosingPatternsMatches[specialCharIndex][0];
+    endText = defaultEnclosingPatternsMatches[specialCharIndex][1];
   } else {
     startText = input;
     endText = input;
@@ -109,9 +192,11 @@ export async function sorround(
 
 }
 
-const defaultEnclosingPatterns = [
+const defaultEnclosingPatternsMatches = [
   ["[", "]"],
   ["(", ")"],
   ["{", "}"],
   ["<", ">"],
 ];
+
+const defaultEnclosingPatterns = defaultEnclosingPatternsMatches.flat();

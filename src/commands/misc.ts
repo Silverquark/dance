@@ -267,7 +267,7 @@ export async function updateRegister(
  * | Add the digit 7 to the counter | `7` (normal), `NumPad7` (normal), `7` (visual), `NumPad7` (visual) | `[".updateCount", { addDigits: 7 }]` |
  * | Add the digit 8 to the counter | `8` (normal), `NumPad8` (normal), `8` (visual), `NumPad8` (visual) | `[".updateCount", { addDigits: 8 }]` |
  * | Add the digit 9 to the counter | `9` (normal), `NumPad9` (normal), `9` (visual), `NumPad9` (visual) | `[".updateCount", { addDigits: 9 }]` |
-*
+ *
  * @noreplay
  */
 export async function updateCount(

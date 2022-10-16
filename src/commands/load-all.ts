@@ -189,6 +189,12 @@ import {
 } from "./keybindings";
 
 import {
+  sorround as match_sorround,
+  sorrounddelete as match_sorrounddelete,
+  sorroundreplace as match_sorroundreplace,
+} from "./match";
+
+import {
   cancel as cancel,
   changeInput as changeInput,
   ignore as ignore,
@@ -264,8 +270,14 @@ import {
 } from "./selections.rotate";
 
 import {
+} from "./space";
+
+import {
   line as view_line,
 } from "./view";
+
+import {
+} from "./window";
 
 /**
  * All defined Dance commands.
@@ -421,6 +433,21 @@ export const commands: Commands = function () {
     "dance.keybindings.setup": new CommandDescriptor(
       "dance.keybindings.setup",
       (_, argument) => _.runAsync((_) => keybindings_setup(_, getRegister(_, argument, "dquote", Register.Flags.CanWrite))),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "dance.match.sorround": new CommandDescriptor(
+      "dance.match.sorround",
+      (_, argument) => _.runAsync((_) => match_sorround(_, _.selections, getRegister(_, argument, "dquote", Register.Flags.CanRead), getInputOr("input", argument))),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "dance.match.sorrounddelete": new CommandDescriptor(
+      "dance.match.sorrounddelete",
+      (_, argument) => _.runAsync((_) => match_sorrounddelete(_, _.selections, getInputOr("input", argument))),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "dance.match.sorroundreplace": new CommandDescriptor(
+      "dance.match.sorroundreplace",
+      (_, argument) => _.runAsync((_) => match_sorroundreplace(_, _.selections, getInputOr("input", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "dance.modes.set": new CommandDescriptor(
@@ -772,6 +799,18 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
+    "dance.modes.set.normal",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.modes.set.visual",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".modes.set", { mode: "visual" }]],
+  );
+  describeAdditionalCommand(
+    commands,
     "dance.modes.insert.lineStart",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
@@ -838,21 +877,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.extend",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek", { shift: "extend" , $exclude: [] }]],
-  );
-  describeAdditionalCommand(
-    commands,
     "dance.seek.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { direction: -1, $exclude: [] }]],
-  );
-  describeAdditionalCommand(
-    commands,
-    "dance.seek.extend.backward",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek", { shift: "extend", direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
@@ -862,15 +889,27 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.included.extend",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek", { include: true, shift: "extend" , $exclude: [] }]],
-  );
-  describeAdditionalCommand(
-    commands,
     "dance.seek.included.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { include: true, direction: -1, $exclude: [] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.seek.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek", { shift: "extend" , $exclude: [] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.seek.extend.backward",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek", { shift: "extend", direction: -1, $exclude: [] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.seek.included.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek", { include: true, shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
@@ -898,9 +937,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.extend",
+    "dance.seek.word.ws",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek.word", { shift: "extend" , $exclude: [] }]],
+    [[".seek.word", { ws: true , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
@@ -910,33 +949,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.extend.backward",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek.word", { shift: "extend", direction: -1, $exclude: [] }]],
-  );
-  describeAdditionalCommand(
-    commands,
-    "dance.seek.word.ws",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek.word", { ws: true , $exclude: [] }]],
-  );
-  describeAdditionalCommand(
-    commands,
-    "dance.seek.word.ws.extend",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek.word", { ws: true, shift: "extend" , $exclude: [] }]],
-  );
-  describeAdditionalCommand(
-    commands,
     "dance.seek.word.ws.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { ws: true, direction: -1, $exclude: [] }]],
-  );
-  describeAdditionalCommand(
-    commands,
-    "dance.seek.word.ws.extend.backward",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek.word", { ws: true, shift: "extend", direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
@@ -946,21 +961,45 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.wordEnd.extend",
+    "dance.seek.wordEnd.ws",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek.word", { stopAtEnd: true , shift: "extend" , $exclude: [] }]],
+    [[".seek.word", { stopAtEnd: true, ws: true , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.wordEnd.ws",
+    "dance.seek.word.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek.word", { stopAtEnd: true , ws: true , $exclude: [] }]],
+    [[".seek.word", { shift: "extend" , $exclude: [] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.seek.word.ws.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek.word", { ws: true, shift: "extend" , $exclude: [] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.seek.word.backward.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek.word", { shift: "extend", direction: -1, $exclude: [] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.seek.word.ws.backward.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek.word", { ws: true, shift: "extend", direction: -1, $exclude: [] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.seek.wordEnd.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek.word", { stopAtEnd: true, shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
     "dance.seek.wordEnd.ws.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".seek.word", { stopAtEnd: true , ws: true, shift: "extend" , $exclude: [] }]],
+    [[".seek.word", { stopAtEnd: true, ws: true, shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
@@ -1291,6 +1330,18 @@ export const commands: Commands = function () {
     "dance.selections.rotate.selections.reverse",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.rotate.selections", { reverse: true }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.modes.visual",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".selections.faceBackward", { record: false }], [".modes.set", { mode: "visual", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.modes.normal",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".selections.faceBackward", { record: false }], [".modes.set", { mode: "normal", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
