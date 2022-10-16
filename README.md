@@ -5,9 +5,7 @@ Keybindings with [Helix](https://helix-editor.com) inspired keybindings
 
 *** This is a WIP ***
 
-A lot of stuff is working, but there are key things that are missing, broken or untestet!
-
-For example match-mode is pretty broken at the current time
+Should be mostly usable, but probably contains bugs, missing features and differences in behaviour with helix
 
 
 Original README:
