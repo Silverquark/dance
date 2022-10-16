@@ -614,14 +614,14 @@ This command:
 
 Match menu.
 
-| Title                   | Keybinding   | Command                                                         |
-| ----------------------- | ------------ | --------------------------------------------------------------- |
-| Show match menu         | `m` (normal) | `[".openMenu", { menu: "match" }]`                              |
-| Show match menu         | `m` (visual) | `[".openMenu", { menu: "match", pass: [{ shift: "extend" }] }]` |
+| Title                   | Keybinding   | Command                            |
+| ----------------------- | ------------ | ---------------------------------- |
+| Show match menu         | `m` (normal) | `[".openMenu", { menu: "match" }]` |
+| Show match menu         | `m` (visual) | `[".openMenu", { menu: "match" }]` |
 
 <a name="match.sorroundreplace" />
 
-### [`match.sorroundreplace`](./match.ts#L24-L32)
+### [`match.sorroundreplace`](./match.ts#L22-L30)
 
 Replace stuff sorround
 
@@ -631,7 +631,7 @@ This command:
 
 <a name="match.sorrounddelete" />
 
-### [`match.sorrounddelete`](./match.ts#L98-L106)
+### [`match.sorrounddelete`](./match.ts#L96-L103)
 
 Delete stuff sorround
 
@@ -641,7 +641,7 @@ This command:
 
 <a name="match.sorround" />
 
-### [`match.sorround`](./match.ts#L162-L171)
+### [`match.sorround`](./match.ts#L159-L168)
 
 Add stuff sorround
 

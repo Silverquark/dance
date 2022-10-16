@@ -442,7 +442,7 @@ export const commands: Commands = function () {
     ),
     "dance.match.sorrounddelete": new CommandDescriptor(
       "dance.match.sorrounddelete",
-      (_, argument) => _.runAsync((_) => match_sorrounddelete(_, _.selections, getInputOr("input", argument))),
+      (_, argument) => _.runAsync((_) => match_sorrounddelete(_, getInputOr("input", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "dance.match.sorroundreplace": new CommandDescriptor(

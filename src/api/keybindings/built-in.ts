@@ -450,11 +450,6 @@ const builtinKeybindings = [
     command: "dance.openMenu",
     args: {
       menu: "match",
-      pass: [
-        {
-          shift: "extend",
-        },
-      ],
     },
   },
   {

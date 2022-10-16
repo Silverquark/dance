@@ -513,69 +513,6 @@
             "object": {
               "title": "Select object...",
               "items": {
-                "b()": {
-                  "command": "dance.seek.object",
-                  "args": [
-                    {
-                      "input": "\\((?#inner)\\)"
-                    }
-                  ],
-                  "text": "parenthesis block"
-                },
-                "B{}": {
-                  "command": "dance.seek.object",
-                  "args": [
-                    {
-                      "input": "\\{(?#inner)\\}"
-                    }
-                  ],
-                  "text": "braces block"
-                },
-                "r[]": {
-                  "command": "dance.seek.object",
-                  "args": [
-                    {
-                      "input": "\\[(?#inner)\\]"
-                    }
-                  ],
-                  "text": "brackets block"
-                },
-                "a<>": {
-                  "command": "dance.seek.object",
-                  "args": [
-                    {
-                      "input": "<(?#inner)>"
-                    }
-                  ],
-                  "text": "angle block"
-                },
-                "Q\"": {
-                  "command": "dance.seek.object",
-                  "args": [
-                    {
-                      "input": "(?#noescape)\"(?#inner)(?#noescape)\""
-                    }
-                  ],
-                  "text": "double quote string"
-                },
-                "q'": {
-                  "command": "dance.seek.object",
-                  "args": [
-                    {
-                      "input": "(?#noescape)'(?#inner)(?#noescape)'"
-                    }
-                  ],
-                  "text": "single quote string"
-                },
-                "g`": {
-                  "command": "dance.seek.object",
-                  "args": [
-                    {
-                      "input": "(?#noescape)`(?#inner)(?#noescape)`"
-                    }
-                  ],
-                  "text": "grave quote string"
-                },
                 "w": {
                   "command": "dance.seek.object",
                   "args": [
@@ -630,23 +567,68 @@
                   ],
                   "text": "indent"
                 },
-                "n": {
+                "()": {
                   "command": "dance.seek.object",
                   "args": [
                     {
-                      "input": "(?#singleline)-?[\\d_]+(\\.[0-9]+)?([eE]\\d+)?"
+                      "input": "\\((?#inner)\\)"
                     }
                   ],
-                  "text": "number"
+                  "text": "parenthesis block"
                 },
-                "u": {
+                "{}": {
                   "command": "dance.seek.object",
                   "args": [
                     {
-                      "input": "(?#predefined=argument)"
+                      "input": "\\{(?#inner)\\}"
                     }
                   ],
-                  "text": "argument"
+                  "text": "braces block"
+                },
+                "[]": {
+                  "command": "dance.seek.object",
+                  "args": [
+                    {
+                      "input": "\\[(?#inner)\\]"
+                    }
+                  ],
+                  "text": "brackets block"
+                },
+                "<>": {
+                  "command": "dance.seek.object",
+                  "args": [
+                    {
+                      "input": "<(?#inner)>"
+                    }
+                  ],
+                  "text": "angle block"
+                },
+                "\"": {
+                  "command": "dance.seek.object",
+                  "args": [
+                    {
+                      "input": "(?#noescape)\"(?#inner)(?#noescape)\""
+                    }
+                  ],
+                  "text": "double quote string"
+                },
+                "'": {
+                  "command": "dance.seek.object",
+                  "args": [
+                    {
+                      "input": "(?#noescape)'(?#inner)(?#noescape)'"
+                    }
+                  ],
+                  "text": "single quote string"
+                },
+                "`": {
+                  "command": "dance.seek.object",
+                  "args": [
+                    {
+                      "input": "(?#noescape)`(?#inner)(?#noescape)`"
+                    }
+                  ],
+                  "text": "grave quote string"
                 },
                 "c": {
                   "command": "dance.seek.object",
@@ -675,11 +657,11 @@
                 },
                 "a": {
                   "text": "Select around object",
-                  "command": "dance.match.openObjectMenu"
+                  "command": "dance.seek.askObject"
                 },
                 "i": {
                   "text": "Select inside object",
-                  "command": "dance.misc.openMenu"
+                  "command": "dance.seek.askObject.inner"
                 }
               }
             },
@@ -3309,12 +3291,7 @@
         "title": "Show match menu",
         "command": "dance.openMenu",
         "args": {
-          "menu": "match",
-          "pass": [
-            {
-              "shift": "extend"
-            }
-          ]
+          "menu": "match"
         }
       },
       {

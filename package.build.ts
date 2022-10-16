@@ -402,41 +402,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             "object": {
               title: "Select object...",
               items: ((command = "dance.seek.object") => ({
-                "b()": {
-                  command,
-                  args: [{ input: "\\((?#inner)\\)" }],
-                  text: "parenthesis block",
-                },
-                "B{}": {
-                  command,
-                  args: [{ input: "\\{(?#inner)\\}" }],
-                  text: "braces block",
-                },
-                "r[]": {
-                  command,
-                  args: [{ input: "\\[(?#inner)\\]" }],
-                  text: "brackets block",
-                },
-                "a<>": {
-                  command,
-                  args: [{ input: "<(?#inner)>" }],
-                  text: "angle block",
-                },
-                'Q"': {
-                  command,
-                  args: [{ input: "(?#noescape)\"(?#inner)(?#noescape)\"" }],
-                  text: "double quote string",
-                },
-                "q'": {
-                  command,
-                  args: [{ input: "(?#noescape)'(?#inner)(?#noescape)'" }],
-                  text: "single quote string",
-                },
-                "g`": {
-                  command,
-                  args: [{ input: "(?#noescape)`(?#inner)(?#noescape)`" }],
-                  text: "grave quote string",
-                },
                 "w": {
                   command,
                   args: [{ input: "[\\p{L}_\\d]+(?<after>[^\\S\\n]+)" }],
@@ -467,15 +432,40 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   args: [{ input: "(?#predefined=indent)" }],
                   text: "indent",
                 },
-                "n": {
+                "()": {
                   command,
-                  args: [{ input: "(?#singleline)-?[\\d_]+(\\.[0-9]+)?([eE]\\d+)?" }],
-                  text: "number",
+                  args: [{ input: "\\((?#inner)\\)" }],
+                  text: "parenthesis block",
                 },
-                "u": {
+                "{}": {
                   command,
-                  args: [{ input: "(?#predefined=argument)" }],
-                  text: "argument",
+                  args: [{ input: "\\{(?#inner)\\}" }],
+                  text: "braces block",
+                },
+                "[]": {
+                  command,
+                  args: [{ input: "\\[(?#inner)\\]" }],
+                  text: "brackets block",
+                },
+                "<>": {
+                  command,
+                  args: [{ input: "<(?#inner)>" }],
+                  text: "angle block",
+                },
+                '"': {
+                  command,
+                  args: [{ input: "(?#noescape)\"(?#inner)(?#noescape)\"" }],
+                  text: "double quote string",
+                },
+                "'": {
+                  command,
+                  args: [{ input: "(?#noescape)'(?#inner)(?#noescape)'" }],
+                  text: "single quote string",
+                },
+                "`": {
+                  command,
+                  args: [{ input: "(?#noescape)`(?#inner)(?#noescape)`" }],
+                  text: "grave quote string",
                 },
                 "c": {
                   command,
@@ -506,17 +496,16 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 },
                 "a": {
                   text: "Select around object",
-                  command: "dance.match.openObjectMenu",
+                  command: "dance.seek.askObject",
                   // args: [{ input: "\\((?#inner)\\)" }],
                 },
                 "i": {
                   text: "Select inside object",
-                  command: "dance.misc.openMenu",
+                  command: "dance.seek.askObject.inner",
                   // args: [{ input: "\\((?#inner)\\)" }],
                 },
               },
             },
-
             "space": {
               title: "Space",
               items: {

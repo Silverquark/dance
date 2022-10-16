@@ -1,23 +1,21 @@
-import { text } from "stream/consumers";
 import * as vscode from "vscode";
 
 import type { Argument, InputOr, RegisterOr } from ".";
-import { insert as apiInsert, Context, deindentLines, Direction, edit, indentLines, insertByIndex, insertByIndexWithFullLines, insertFlagsAtEdge, joinLines, keypress, Positions, prompt, replace, replaceByIndex, Selections, Shift, moveToExcluded, moveToIncluded } from "../api";
+import { insert as apiInsert, Context, deindentLines, Direction, edit, findMenu, indentLines, insertByIndex, insertByIndexWithFullLines, insertFlagsAtEdge, joinLines, keypress, moveToExcluded, moveToIncluded, Positions, prompt, replace, replaceByIndex, Selections, Shift, showMenu } from "../api";
 import type { Register } from "../state/registers";
 import { LengthMismatchError } from "../utils/errors";
 import { insert } from "./edit";
 import { escapeForRegExp, execRange } from "../utils/regexp";
 import { select } from "./selections";
-import { openMenu } from "./misc";
 // import { closestSurroundedBy, Context, Direction, keypress, Lines, moveToExcluded, moveWhileBackward, moveWhileForward, Objects, Pair, pair, Positions, prompt, search, SelectionBehavior, Selections, Shift, surroundedBy, wordBoundary } from "../api";
 
 /**
  * Match menu.
  *
- * | Title                   | Keybinding   | Command                                                         |
- * | ----------------------- | ------------ | --------------------------------------------------------------- |
- * | Show match menu         | `m` (normal) | `[".openMenu", { menu: "match" }]`                              |
- * | Show match menu         | `m` (visual) | `[".openMenu", { menu: "match", pass: [{ shift: "extend" }] }]` |
+ * | Title                   | Keybinding   | Command                            |
+ * | ----------------------- | ------------ | ---------------------------------- |
+ * | Show match menu         | `m` (normal) | `[".openMenu", { menu: "match" }]` |
+ * | Show match menu         | `m` (visual) | `[".openMenu", { menu: "match" }]` |
  */
 declare module "./match";
 
@@ -85,11 +83,11 @@ export async function sorroundreplace(
   return _.run(() => edit((editBuilder, selections, document) => {
     for (const pos of positions) {
 
-      const balala1 = new vscode.Range(pos[0]!, new vscode.Position(pos[0]!.line, pos[0]?.character! + 1));
-      const balala2 = new vscode.Range(pos[1]!, new vscode.Position(pos[1]!.line, pos[1]?.character! - 1));
+      const endRange = new vscode.Range(pos[0]!, new vscode.Position(pos[0]!.line, pos[0]?.character! + 1));
+      const startRange = new vscode.Range(pos[1]!, new vscode.Position(pos[1]!.line, pos[1]?.character! - 1));
 
-      editBuilder.replace(balala1, endTextReplace);
-      editBuilder.replace(balala2, startTextReplace);
+      editBuilder.replace(endRange, endTextReplace);
+      editBuilder.replace(startRange, startTextReplace);
 
     }
   }));
@@ -101,7 +99,6 @@ export async function sorroundreplace(
  */
 export async function sorrounddelete(
   _: Context,
-  selections: readonly vscode.Selection[],
   inputOr: InputOr<"input", string>,
 ) {
   const inputFind = await inputOr(() => keypress(_));
@@ -149,11 +146,11 @@ export async function sorrounddelete(
   return _.run(() => edit((editBuilder, selections, document) => {
     for (const pos of positions) {
 
-      const balala1 = new vscode.Range(pos[0]!, new vscode.Position(pos[0]!.line, pos[0]?.character! + 1));
-      const balala2 = new vscode.Range(pos[1]!, new vscode.Position(pos[1]!.line, pos[1]?.character! - 1));
+      const endRange = new vscode.Range(pos[0]!, new vscode.Position(pos[0]!.line, pos[0]?.character! + 1));
+      const startRange = new vscode.Range(pos[1]!, new vscode.Position(pos[1]!.line, pos[1]?.character! - 1));
 
-      editBuilder.replace(balala1, "");
-      editBuilder.replace(balala2, "");
+      editBuilder.replace(endRange, "");
+      editBuilder.replace(startRange, "");
 
     }
   }));
@@ -198,5 +195,3 @@ const defaultEnclosingPatternsMatches = [
   ["{", "}"],
   ["<", ">"],
 ];
-
-const defaultEnclosingPatterns = defaultEnclosingPatternsMatches.flat();
