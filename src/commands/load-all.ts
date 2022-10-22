@@ -799,12 +799,6 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.set.normal",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]],
-  );
-  describeAdditionalCommand(
-    commands,
     "dance.modes.set.visual",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".modes.set", { mode: "visual" }]],
@@ -1330,6 +1324,12 @@ export const commands: Commands = function () {
     "dance.selections.rotate.selections.reverse",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.rotate.selections", { reverse: true }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "dance.window.windowMenu",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".openMenu", { menu: "window", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,

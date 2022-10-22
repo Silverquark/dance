@@ -867,8 +867,20 @@ const builtinKeybindings = [
     command: "dance.modes.insert.after",
   },
   {
+    key: "A",
+    when: "editorTextFocus && dance.mode == 'visual'",
+    title: "Insert after",
+    command: "dance.modes.insert.after",
+  },
+  {
     key: "I",
     when: "editorTextFocus && dance.mode == 'normal'",
+    title: "Insert before",
+    command: "dance.modes.insert.before",
+  },
+  {
+    key: "I",
+    when: "editorTextFocus && dance.mode == 'visual'",
     title: "Insert before",
     command: "dance.modes.insert.before",
   },
@@ -879,8 +891,20 @@ const builtinKeybindings = [
     command: "dance.modes.insert.lineEnd",
   },
   {
+    key: "Shift+A",
+    when: "editorTextFocus && dance.mode == 'visual'",
+    title: "Insert at line end",
+    command: "dance.modes.insert.lineEnd",
+  },
+  {
     key: "Shift+I",
     when: "editorTextFocus && dance.mode == 'normal'",
+    title: "Insert at line start",
+    command: "dance.modes.insert.lineStart",
+  },
+  {
+    key: "Shift+I",
+    when: "editorTextFocus && dance.mode == 'visual'",
     title: "Insert at line start",
     command: "dance.modes.insert.lineStart",
   },
@@ -1943,20 +1967,12 @@ const builtinKeybindings = [
     key: "Ctrl+W",
     when: "editorTextFocus && dance.mode == 'normal'",
     title: "Show window menu",
-    command: "dance.openMenu",
-    args: {
-      menu: "window",
-      "$exclude": [],
-    },
+    command: "dance.window.windowMenu",
   },
   {
     key: "Ctrl+W",
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Show window menu",
-    command: "dance.openMenu",
-    args: {
-      menu: "window",
-      "$exclude": [],
-    },
+    command: "dance.window.windowMenu",
   },
 ];

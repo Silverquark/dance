@@ -5,8 +5,8 @@ import * as vscode from "vscode";
  *
  * #### Predefined keybindings
  *
- * | Title                   | Keybinding                     | Command                                 |
- * | ----------------------- | ------------------------------ | --------------------------------------- |
- * | Show window menu        | `c-w` (normal), `c-w` (visual) | `[".openMenu", { menu: "window", ... }]` |
+ * | Title                   | Identifier                     | Keybinding                     | Command                                  |
+ * | ----------------------- | ------------------------------ | ------------------------------ | ---------------------------------------- |
+ * | Show window menu        | `windowMenu`                   | `c-w` (normal), `c-w` (visual) | `[".openMenu", { menu: "window", ... }]` |
  */
 declare module "./window";
