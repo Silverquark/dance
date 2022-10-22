@@ -1,15 +1,15 @@
 {
-  "name": "dance",
-  "description": "Kakoune-inspired key bindings, modes, menus and scripting.",
-  "version": "0.5.11",
+  "name": "dancehelix",
+  "description": "Fork of Dance with helix keybindings (Unfinished)",
+  "version": "0.5.13",
   "license": "ISC",
   "author": {
-    "name": "Grégoire Geis",
-    "email": "opensource@gregoirege.is"
+    "name": "Leo",
+    "email": "le.lueker@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/71/dance.git"
+    "url": "https://github.com/Silverquark/dance.git"
   },
   "main": "./out/src/extension.js",
   "browser": "./out/web/extension.js",
@@ -52,8 +52,8 @@
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
   },
-  "displayName": "Dance",
-  "publisher": "gregoire",
+  "displayName": "Dance - Helix Alpha",
+  "publisher": "silverquark",
   "categories": [
     "Keymaps",
     "Other"
@@ -374,6 +374,7 @@
               "cursorStyle": "underline-thin"
             },
             "insert": {
+              "selectionBehavior": "character",
               "onLeaveMode": [
                 [
                   ".selections.save",
@@ -384,7 +385,7 @@
               ]
             },
             "visual": {
-              "cursorStyle": "block",
+              "cursorStyle": "underline",
               "selectionBehavior": "character",
               "decorations": {
                 "applyTo": "main",
@@ -416,6 +417,12 @@
                         "mode-did-change",
                         {
                           "include": "normal"
+                        }
+                      ],
+                      [
+                        "mode-did-change",
+                        {
+                          "include": "visual"
                         }
                       ],
                       [
@@ -460,6 +467,12 @@
                         "mode-did-change",
                         {
                           "include": "normal"
+                        }
+                      ],
+                      [
+                        "mode-did-change",
+                        {
+                          "include": "visual"
                         }
                       ],
                       [
@@ -687,6 +700,10 @@
                 "d": {
                   "text": "Start debug",
                   "command": "workbench.action.debug.start"
+                },
+                "w": {
+                  "text": "Window",
+                  "command": "dance.window.windowMenu"
                 },
                 "y": {
                   "text": "Join and yank selections to clipboard",
@@ -1393,11 +1410,6 @@
         "category": "Dance"
       },
       {
-        "command": "dance.modes.set.normal",
-        "title": "Set mode to Normal",
-        "category": "Dance"
-      },
-      {
         "command": "dance.modes.set.temporarily",
         "title": "Set Dance mode temporarily",
         "category": "Dance"
@@ -2061,6 +2073,11 @@
         "command": "dance.view.line",
         "title": "Reveals a position based on the main cursor",
         "category": "Dance"
+      },
+      {
+        "command": "dance.window.windowMenu",
+        "title": "Show window menu",
+        "category": "Dance"
       }
     ],
     "menus": {
@@ -2299,10 +2316,6 @@
         },
         {
           "command": "dance.modes.set.insert",
-          "when": "dance.mode == 'normal'"
-        },
-        {
-          "command": "dance.modes.set.normal",
           "when": "dance.mode == 'normal'"
         },
         {
@@ -2839,6 +2852,10 @@
         },
         {
           "command": "dance.view.line",
+          "when": "dance.mode == 'normal'"
+        },
+        {
+          "command": "dance.window.windowMenu",
           "when": "dance.mode == 'normal'"
         }
       ]
@@ -3709,8 +3726,20 @@
         "command": "dance.modes.insert.after"
       },
       {
+        "key": "A",
+        "when": "editorTextFocus && dance.mode == 'visual'",
+        "title": "Insert after",
+        "command": "dance.modes.insert.after"
+      },
+      {
         "key": "I",
         "when": "editorTextFocus && dance.mode == 'normal'",
+        "title": "Insert before",
+        "command": "dance.modes.insert.before"
+      },
+      {
+        "key": "I",
+        "when": "editorTextFocus && dance.mode == 'visual'",
         "title": "Insert before",
         "command": "dance.modes.insert.before"
       },
@@ -3721,8 +3750,20 @@
         "command": "dance.modes.insert.lineEnd"
       },
       {
+        "key": "Shift+A",
+        "when": "editorTextFocus && dance.mode == 'visual'",
+        "title": "Insert at line end",
+        "command": "dance.modes.insert.lineEnd"
+      },
+      {
         "key": "Shift+I",
         "when": "editorTextFocus && dance.mode == 'normal'",
+        "title": "Insert at line start",
+        "command": "dance.modes.insert.lineStart"
+      },
+      {
+        "key": "Shift+I",
+        "when": "editorTextFocus && dance.mode == 'visual'",
         "title": "Insert at line start",
         "command": "dance.modes.insert.lineStart"
       },
@@ -4785,21 +4826,13 @@
         "key": "Ctrl+W",
         "when": "editorTextFocus && dance.mode == 'normal'",
         "title": "Show window menu",
-        "command": "dance.openMenu",
-        "args": {
-          "menu": "window",
-          "$exclude": []
-        }
+        "command": "dance.window.windowMenu"
       },
       {
         "key": "Ctrl+W",
         "when": "editorTextFocus && dance.mode == 'visual'",
         "title": "Show window menu",
-        "command": "dance.openMenu",
-        "args": {
-          "menu": "window",
-          "$exclude": []
-        }
+        "command": "dance.window.windowMenu"
       },
       {
         "command": "dance.ignore",
