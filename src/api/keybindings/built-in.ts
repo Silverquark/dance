@@ -861,6 +861,14 @@ const builtinKeybindings = [
     },
   },
   {
+    key: "Shift+;",
+    when: "editorTextFocus && dance.mode == 'visual'",
+    command: "workbench.action.showCommands",
+    args: {
+      "$exclude": [],
+    },
+  },
+  {
     key: "A",
     when: "editorTextFocus && dance.mode == 'normal'",
     title: "Insert after",
@@ -907,12 +915,6 @@ const builtinKeybindings = [
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Insert at line start",
     command: "dance.modes.insert.lineStart",
-  },
-  {
-    key: "V",
-    when: "editorTextFocus && dance.mode == 'visual'",
-    title: "Normal",
-    command: "dance.modes.normal",
   },
   {
     key: "Escape",
@@ -922,6 +924,12 @@ const builtinKeybindings = [
   },
   {
     key: "Escape",
+    when: "editorTextFocus && dance.mode == 'visual'",
+    title: "Set mode to Normal",
+    command: "dance.modes.set.normal",
+  },
+  {
+    key: "V",
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Set mode to Normal",
     command: "dance.modes.set.normal",
@@ -941,8 +949,8 @@ const builtinKeybindings = [
   {
     key: "V",
     when: "editorTextFocus && dance.mode == 'normal'",
-    title: "Visual",
-    command: "dance.modes.visual",
+    title: "Set mode to Visual",
+    command: "dance.modes.set.visual",
   },
   {
     key: "/",

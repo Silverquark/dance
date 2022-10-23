@@ -204,7 +204,7 @@ export function word(
   const charset = ws ? CharSet.NonBlank : CharSet.Word;
 
   Selections.updateWithFallbackByIndex((_i, selection) => {
-    const anchor = Selections.seekFrom(selection, direction, selection.anchor, _);
+    const anchor = selection.anchor; // Selections.seekFrom(selection, direction, selection.anchor, _);
     let active = Selections.seekFrom(selection, direction, selection.active, _);
 
     for (let i = 0; i < repetitions; i++) {

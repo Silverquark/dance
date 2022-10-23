@@ -374,7 +374,6 @@
               "cursorStyle": "underline-thin"
             },
             "insert": {
-              "selectionBehavior": "character",
               "onLeaveMode": [
                 [
                   ".selections.save",
@@ -385,13 +384,9 @@
               ]
             },
             "visual": {
+              "lineNumbers": "relative",
               "cursorStyle": "underline",
               "selectionBehavior": "character",
-              "decorations": {
-                "applyTo": "main",
-                "backgroundColor": "$merge.incomingContentBackground",
-                "isWholeLine": true
-              },
               "onEnterMode": [
                 [
                   ".selections.restore",
@@ -437,11 +432,6 @@
               "lineNumbers": "relative",
               "cursorStyle": "block",
               "selectionBehavior": "character",
-              "decorations": {
-                "applyTo": "main",
-                "backgroundColor": "$editor.hoverHighlightBackground",
-                "isWholeLine": true
-              },
               "onEnterMode": [
                 [
                   ".selections.restore",
@@ -1390,11 +1380,6 @@
         "category": "Dance"
       },
       {
-        "command": "dance.modes.normal",
-        "title": "Normal",
-        "category": "Dance"
-      },
-      {
         "command": "dance.modes.set",
         "title": "Set Dance mode",
         "category": "Dance"
@@ -1427,11 +1412,6 @@
       {
         "command": "dance.modes.set.visual",
         "title": "Set mode to Visual",
-        "category": "Dance"
-      },
-      {
-        "command": "dance.modes.visual",
-        "title": "Visual",
         "category": "Dance"
       },
       {
@@ -2307,10 +2287,6 @@
           "when": "dance.mode == 'normal'"
         },
         {
-          "command": "dance.modes.normal",
-          "when": "dance.mode == 'normal'"
-        },
-        {
           "command": "dance.modes.set",
           "when": "dance.mode == 'normal'"
         },
@@ -2336,10 +2312,6 @@
         },
         {
           "command": "dance.modes.set.visual",
-          "when": "dance.mode == 'normal'"
-        },
-        {
-          "command": "dance.modes.visual",
           "when": "dance.mode == 'normal'"
         },
         {
@@ -3720,6 +3692,14 @@
         }
       },
       {
+        "key": "Shift+;",
+        "when": "editorTextFocus && dance.mode == 'visual'",
+        "command": "workbench.action.showCommands",
+        "args": {
+          "$exclude": []
+        }
+      },
+      {
         "key": "A",
         "when": "editorTextFocus && dance.mode == 'normal'",
         "title": "Insert after",
@@ -3766,12 +3746,6 @@
         "when": "editorTextFocus && dance.mode == 'visual'",
         "title": "Insert at line start",
         "command": "dance.modes.insert.lineStart"
-      },
-      {
-        "key": "V",
-        "when": "editorTextFocus && dance.mode == 'visual'",
-        "title": "Normal",
-        "command": "dance.modes.normal"
       },
       {
         "key": "Escape",
@@ -3781,6 +3755,12 @@
       },
       {
         "key": "Escape",
+        "when": "editorTextFocus && dance.mode == 'visual'",
+        "title": "Set mode to Normal",
+        "command": "dance.modes.set.normal"
+      },
+      {
+        "key": "V",
         "when": "editorTextFocus && dance.mode == 'visual'",
         "title": "Set mode to Normal",
         "command": "dance.modes.set.normal"
@@ -3800,8 +3780,8 @@
       {
         "key": "V",
         "when": "editorTextFocus && dance.mode == 'normal'",
-        "title": "Visual",
-        "command": "dance.modes.visual"
+        "title": "Set mode to Visual",
+        "command": "dance.modes.set.visual"
       },
       {
         "key": "/",

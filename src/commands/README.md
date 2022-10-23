@@ -64,17 +64,15 @@
     <tr><td><a href="#selectRegister"><code>selectRegister</code></a></td><td>Select register for next command</td><td><code>Shift+'</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+'</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="#updateCount"><code>updateCount</code></a></td><td>Update Dance count</td><td></td></tr>
     <tr><td><a href="#updateRegister"><code>updateRegister</code></a></td><td>Update the contents of a register</td><td></td></tr>
-    <tr><td rowspan=13><a href="#modes"><code>modes</code></a></td><td><a href="./modes.ts#L27"><code>modes.insert.after</code></a></td><td>Insert after</td><td><code>A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>A</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
-    <tr><td><a href="./modes.ts#L26"><code>modes.insert.before</code></a></td><td>Insert before</td><td><code>I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>I</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
-    <tr><td><a href="./modes.ts#L29"><code>modes.insert.lineEnd</code></a></td><td>Insert at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+A</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
-    <tr><td><a href="./modes.ts#L28"><code>modes.insert.lineStart</code></a></td><td>Insert at line start</td><td><code>Shift+I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+I</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
-    <tr><td><a href="./modes.ts#L25"><code>modes.normal</code></a></td><td>Normal</td><td><code>V</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td rowspan=11><a href="#modes"><code>modes</code></a></td><td><a href="./modes.ts#L25"><code>modes.insert.after</code></a></td><td>Insert after</td><td><code>A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>A</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L24"><code>modes.insert.before</code></a></td><td>Insert before</td><td><code>I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>I</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L27"><code>modes.insert.lineEnd</code></a></td><td>Insert at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+A</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L26"><code>modes.insert.lineStart</code></a></td><td>Insert at line start</td><td><code>Shift+I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+I</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="./modes.ts#L17"><code>modes.set.insert</code></a></td><td>Set mode to Insert</td><td></td></tr>
-    <tr><td><a href="./modes.ts#L16"><code>modes.set.normal</code></a></td><td>Set mode to Normal</td><td><code>Escape</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)<code>Escape</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
-    <tr><td><a href="./modes.ts#L45"><code>modes.set.temporarily.insert</code></a></td><td>Temporary Insert mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./modes.ts#L44"><code>modes.set.temporarily.normal</code></a></td><td>Temporary Normal mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
-    <tr><td><a href="./modes.ts#L18"><code>modes.set.visual</code></a></td><td>Set mode to Visual</td><td></td></tr>
-    <tr><td><a href="./modes.ts#L24"><code>modes.visual</code></a></td><td>Visual</td><td><code>V</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L16"><code>modes.set.normal</code></a></td><td>Set mode to Normal</td><td><code>Escape</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)<code>Escape</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>V</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L43"><code>modes.set.temporarily.insert</code></a></td><td>Temporary Insert mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L42"><code>modes.set.temporarily.normal</code></a></td><td>Temporary Normal mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L18"><code>modes.set.visual</code></a></td><td>Set mode to Visual</td><td><code>V</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
     <tr><td><a href="#modes.set"><code>modes.set</code></a></td><td>Set Dance mode</td><td></td></tr>
     <tr><td><a href="#modes.set.temporarily"><code>modes.set.temporarily</code></a></td><td>Set Dance mode temporarily</td><td></td></tr>
     <tr><td rowspan=10><a href="#search"><code>search</code></a></td><td><a href="#search.next"><code>search.next</code></a></td><td>Select next match</td><td><code>N</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
@@ -90,16 +88,16 @@
     <tr><td rowspan=35><a href="#seek"><code>seek</code></a></td><td><a href="#seek.enclosing"><code>seek.enclosing</code></a></td><td>Select to next enclosing character</td><td><code>Shift+M</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
     <tr><td><a href="#seek.object"><code>seek.object</code></a></td><td>Select object</td><td></td></tr>
     <tr><td><a href="#seek.seek"><code>seek.seek</code></a></td><td>Select to character (excluded)</td><td><code>T</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L270"><code>seek.askObject</code></a></td><td>Select whole object</td><td><code>Alt+A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+A</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L276"><code>seek.askObject.end</code></a></td><td>Select to whole object end</td><td><code>]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L277"><code>seek.askObject.end.extend</code></a></td><td>Extend to whole object end</td><td><code>Shift+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L271"><code>seek.askObject.inner</code></a></td><td>Select inner object</td><td><code>Alt+I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+I</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L278"><code>seek.askObject.inner.end</code></a></td><td>Select to inner object end</td><td><code>Alt+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L279"><code>seek.askObject.inner.end.extend</code></a></td><td>Extend to inner object end</td><td><code>Shift+Alt+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L274"><code>seek.askObject.inner.start</code></a></td><td>Select to inner object start</td><td><code>Alt+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L275"><code>seek.askObject.inner.start.extend</code></a></td><td>Extend to inner object start</td><td><code>Shift+Alt+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L272"><code>seek.askObject.start</code></a></td><td>Select to whole object start</td><td><code>[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="./seek.ts#L273"><code>seek.askObject.start.extend</code></a></td><td>Extend to whole object start</td><td><code>Shift+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L269"><code>seek.askObject</code></a></td><td>Select whole object</td><td><code>Alt+A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+A</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L275"><code>seek.askObject.end</code></a></td><td>Select to whole object end</td><td><code>]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L276"><code>seek.askObject.end.extend</code></a></td><td>Extend to whole object end</td><td><code>Shift+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L270"><code>seek.askObject.inner</code></a></td><td>Select inner object</td><td><code>Alt+I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+I</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L277"><code>seek.askObject.inner.end</code></a></td><td>Select to inner object end</td><td><code>Alt+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L278"><code>seek.askObject.inner.end.extend</code></a></td><td>Extend to inner object end</td><td><code>Shift+Alt+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L273"><code>seek.askObject.inner.start</code></a></td><td>Select to inner object start</td><td><code>Alt+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L274"><code>seek.askObject.inner.start.extend</code></a></td><td>Extend to inner object start</td><td><code>Shift+Alt+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L271"><code>seek.askObject.start</code></a></td><td>Select to whole object start</td><td><code>[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L272"><code>seek.askObject.start.extend</code></a></td><td>Extend to whole object start</td><td><code>Shift+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
     <tr><td><a href="./seek.ts#L23"><code>seek.backward</code></a></td><td>Select to character (excluded, backward)</td><td><code>Shift+T</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
     <tr><td><a href="./seek.ts#L89"><code>seek.enclosing.backward</code></a></td><td>Select to previous enclosing character</td><td><code>Alt+M</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
     <tr><td><a href="./seek.ts#L88"><code>seek.enclosing.extend</code></a></td><td>Extend to next enclosing character</td><td><code>Shift+M</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
@@ -657,9 +655,9 @@ Miscellaneous commands that don't deserve their own category.
 By default, Dance also exports the following keybindings for existing
 commands:
 
-| Keybinding     | Command                                      |
-| -------------- | -------------------------------------------- |
-| `s-;` (normal) | `["workbench.action.showCommands", { ... }]` |
+| Keybinding                     | Command                                      |
+| ------------------------------ | -------------------------------------------- |
+| `s-;` (normal), `s-;` (visual) | `["workbench.action.showCommands", { ... }]` |
 
 <a name=".cancel" />
 
@@ -896,24 +894,22 @@ Set modes.
 
 <a name="modes.set" />
 
-### [`modes.set`](./modes.ts#L9-L33)
+### [`modes.set`](./modes.ts#L9-L31)
 
 Set Dance mode.
 
 #### Variants
 
-| Title              | Identifier   | Keybinding                           | Command                                                     |
-| ------------------ | ------------ | ------------------------------------ | ----------------------------------------------------------- |
-| Set mode to Normal | `set.normal` | `escape` (insert), `escape` (visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
-| Set mode to Insert | `set.insert` |                                      | `[".modes.set", { mode: "insert" }]`                        |
-| Set mode to Visual | `set.visual` |                                      | `[".modes.set", { mode: "visual" }]`                        |
+| Title              | Identifier   | Keybinding                                         | Command                                                     |
+| ------------------ | ------------ | -------------------------------------------------- | ----------------------------------------------------------- |
+| Set mode to Normal | `set.normal` | `escape` (insert), `escape` (visual), `v` (visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
+| Set mode to Insert | `set.insert` |                                                    | `[".modes.set", { mode: "insert" }]`                        |
+| Set mode to Visual | `set.visual` | `v` (normal)                                       | `[".modes.set", { mode: "visual" }]`                        |
 
 Other variants are provided to switch to insert mode:
 
 | Title                | Identifier         | Keybinding                     | Commands                                                                                                                                                                            |
 | -------------------- | ------------------ | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Visual               | `visual`           | `v` (normal)                   | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "visual", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
-| Normal               | `normal`           | `v` (visual)                   | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "normal", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
 | Insert before        | `insert.before`    | `i` (normal), `i` (visual)     | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
 | Insert after         | `insert.after`     | `a` (normal), `a` (visual)     | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
 | Insert at line start | `insert.lineStart` | `s-i` (normal), `s-i` (visual) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
@@ -925,7 +921,7 @@ This command:
 
 <a name="modes.set.temporarily" />
 
-### [`modes.set.temporarily`](./modes.ts#L37-L49)
+### [`modes.set.temporarily`](./modes.ts#L35-L47)
 
 Set Dance mode temporarily.
 
@@ -1089,7 +1085,7 @@ Default keybinding: `w` (normal)
 
 <a name="seek.object" />
 
-### [`seek.object`](./seek.ts#L248-L288)
+### [`seek.object`](./seek.ts#L247-L287)
 
 Select object.
 

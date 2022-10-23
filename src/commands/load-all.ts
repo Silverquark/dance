@@ -1333,18 +1333,6 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.visual",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".selections.faceBackward", { record: false }], [".modes.set", { mode: "visual", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
-  );
-  describeAdditionalCommand(
-    commands,
-    "dance.modes.normal",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".selections.faceBackward", { record: false }], [".modes.set", { mode: "normal", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
-  );
-  describeAdditionalCommand(
-    commands,
     "dance.modes.insert.before",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.faceBackward", { record: false }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],

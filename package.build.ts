@@ -299,7 +299,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               cursorStyle: "underline-thin",
             },
             insert: {
-              selectionBehavior: "character",
               onLeaveMode: [
                 [".selections.save", {
                   register: " insert",
@@ -307,13 +306,14 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               ],
             },
             visual: {
+              lineNumbers: "relative",
               cursorStyle: "underline",
               selectionBehavior: "character",
-              decorations: {
-                applyTo: "main",
-                backgroundColor: "$merge.incomingContentBackground",
-                isWholeLine: true,
-              },
+              // decorations: {
+              //   applyTo: "main",
+              //   backgroundColor: "$merge.incomingContentBackground",
+              //   isWholeLine: true,
+              // },
               onEnterMode: [
                 [".selections.restore", { register: " ^", try: true }],
               ],
@@ -328,6 +328,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   },
                   until: [
                     ["mode-did-change", { include: "normal" }],
+                    ["mode-did-change", { include: "visual" }],
                     ["selections-did-change"],
                   ],
                 }],
@@ -337,11 +338,11 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               lineNumbers: "relative",
               cursorStyle: "block",
               selectionBehavior: "character",
-              decorations: {
-                applyTo: "main",
-                backgroundColor: "$editor.hoverHighlightBackground",
-                isWholeLine: true,
-              },
+              // decorations: {
+              //   applyTo: "main",
+              //   backgroundColor: "$editor.hoverHighlightBackground",
+              //   isWholeLine: true,
+              // },
               onEnterMode: [
                 [".selections.restore", { register: " ^", try: true }],
               ],
@@ -356,6 +357,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   },
                   until: [
                     ["mode-did-change", { include: "normal" }],
+                    ["mode-did-change", { include: "visual" }],
                     ["selections-did-change"],
                   ],
                 }],

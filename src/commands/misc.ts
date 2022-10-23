@@ -10,9 +10,9 @@ import { ArgumentError, CancellationError, InputError } from "../utils/errors";
  * By default, Dance also exports the following keybindings for existing
  * commands:
  *
- * | Keybinding     | Command                                      |
- * | -------------- | -------------------------------------------- |
- * | `s-;` (normal) | `["workbench.action.showCommands", { ... }]` |
+ * | Keybinding                     | Command                                      |
+ * | ------------------------------ | -------------------------------------------- |
+ * | `s-;` (normal), `s-;` (visual) | `["workbench.action.showCommands", { ... }]` |
  */
 declare module "./misc";
 
