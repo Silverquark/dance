@@ -83,7 +83,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
 
   name: "dancehelix",
   description: "Fork of Dance with helix keybindings (Unfinished)",
-  version: "0.5.13",
+  version: "0.5.15",
   license: "ISC",
 
   author: {
@@ -640,7 +640,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 },
                 "d": {
                   text: "to definition",
-                  command: "editor.action.revealDefinitiong",
+                  command: "editor.action.revealDefinition",
                 },
                 "y": {
                   text: "to type definition",
