@@ -4938,6 +4938,21 @@
         "command": "dance.ignore",
         "key": "NumPad_Subtract",
         "when": "editorTextFocus && dance.mode == 'visual'"
+      },
+      {
+        "command": "-lineBreakInsert",
+        "key": "Ctrl+O",
+        "when": ""
+      },
+      {
+        "command": "workbench.action.navigateBack",
+        "key": "Ctrl+O",
+        "when": "canNavigateBack"
+      },
+      {
+        "command": "workbench.action.navigateForward",
+        "key": "Ctrl+I",
+        "when": "canNavigateForward"
       }
     ]
   }

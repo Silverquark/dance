@@ -989,6 +989,23 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
         });
       }
 
+      // allow c-i/c-o independent of mode. remove clashing default keybind
+      keybindings.push({
+        command: "-lineBreakInsert",
+        key: "Ctrl+O",
+        when: "",
+      });
+      keybindings.push({
+        command: "workbench.action.navigateBack",
+        key: "Ctrl+O",
+        when: "canNavigateBack",
+      });
+      keybindings.push({
+        command: "workbench.action.navigateForward",
+        key: "Ctrl+I",
+        when: "canNavigateForward",
+      });
+
       return keybindings;
     })(),
   },
