@@ -298,8 +298,8 @@ const filterHistory: string[] = [];
  * | -------------------------- | ----------------------- | ---------------------------------- | ------------------------------------------------------------------------ |
  * | Keep matching selections   | `filter.regexp`         | `s-k` (normal), `s-k` (visual)     | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
  * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (normal), `s-a-k` (visual) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
- * | Clear secondary selections | `clear.secondary`       | `;` (normal), `;` (visual)         | `[".selections.filter", { expression: "i === count"            , ... }]` |
- * | Clear main selections      | `clear.main`            | `a-;` (normal), `a-;` (visual)     | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+ * | Clear secondary selections | `clear.secondary`       | `,` (normal), `,` (visual)         | `[".selections.filter", { expression: "i === count"            , ... }]` |
+ * | Clear main selections      | `clear.main`            | `a-,` (normal), `a-,` (visual)     | `[".selections.filter", { expression: "i !== count"            , ... }]` |
  */
 export function filter(
   _: Context,
@@ -559,7 +559,7 @@ export function trimWhitespace(_: Context) {
  * @param where Which edge each selection should be reduced to; defaults to
  *   "active".
  *
- * @keys `,` (normal), `,` (visual)
+ * @keys `;` (normal), `;` (visual)
  *
  * #### Variant
  *

@@ -319,11 +319,6 @@ export function to(
   return lineStart(_, count, shift);
 }
 
-/**
- * Select line below.
- *
- * @keys `x` (normal)
- */
 export function line_below(_: Context, count: number) {
   if (count === 0 || count === 1) {
     Selections.updateByIndex((_, selection) => {
@@ -352,7 +347,7 @@ export function line_below(_: Context, count: number) {
 /**
  * Extend to line below.
  *
- * @keys `s-x` (normal), `x` (visual)
+ * @keys `x` (normal), `x` (visual)
  */
 export function line_below_extend(_: Context, count: number) {
   if (count === 0 || count === 1) {

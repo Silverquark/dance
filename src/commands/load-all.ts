@@ -233,7 +233,6 @@ import {
   lineStart as select_lineStart,
   line_above as select_line_above,
   line_above_extend as select_line_above_extend,
-  line_below as select_line_below,
   line_below_extend as select_line_below_extend,
   middleVisibleLine as select_middleVisibleLine,
   to as select_to,
@@ -538,11 +537,6 @@ export const commands: Commands = function () {
     "dance.select.line.above.extend": new CommandDescriptor(
       "dance.select.line.above.extend",
       (_, argument) => _.runAsync((_) => select_line_above_extend(_, getCount(_, argument))),
-      CommandDescriptor.Flags.RequiresActiveEditor,
-    ),
-    "dance.select.line.below": new CommandDescriptor(
-      "dance.select.line.below",
-      (_, argument) => _.runAsync((_) => select_line_below(_, getCount(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "dance.select.line.below.extend": new CommandDescriptor(

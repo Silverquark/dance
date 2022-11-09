@@ -1351,12 +1351,6 @@ const builtinKeybindings = [
   {
     key: "X",
     when: "editorTextFocus && dance.mode == 'normal'",
-    title: "Select line below",
-    command: "dance.select.line.below",
-  },
-  {
-    key: "Shift+X",
-    when: "editorTextFocus && dance.mode == 'normal'",
     title: "Extend to line below",
     command: "dance.select.line.below.extend",
   },
@@ -1619,25 +1613,25 @@ const builtinKeybindings = [
     command: "dance.selections.changeDirection",
   },
   {
-    key: "Alt+;",
+    key: "Alt+,",
     when: "editorTextFocus && dance.mode == 'normal'",
     title: "Clear main selections",
     command: "dance.selections.clear.main",
   },
   {
-    key: "Alt+;",
+    key: "Alt+,",
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Clear main selections",
     command: "dance.selections.clear.main",
   },
   {
-    key: ";",
+    key: ",",
     when: "editorTextFocus && dance.mode == 'normal'",
     title: "Clear secondary selections",
     command: "dance.selections.clear.secondary",
   },
   {
-    key: ";",
+    key: ",",
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Clear secondary selections",
     command: "dance.selections.clear.secondary",
@@ -1751,13 +1745,13 @@ const builtinKeybindings = [
     command: "dance.selections.pipe.replace",
   },
   {
-    key: ",",
+    key: ";",
     when: "editorTextFocus && dance.mode == 'normal'",
     title: "Reduce selections to their cursor",
     command: "dance.selections.reduce",
   },
   {
-    key: ",",
+    key: ";",
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Reduce selections to their cursor",
     command: "dance.selections.reduce",
