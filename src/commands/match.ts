@@ -20,10 +20,10 @@ import { select } from "./selections";
 declare module "./match";
 
 /**
- * Replace stuff sorround
+ * Replace stuff surround
  *
  */
-export async function sorroundreplace(
+export async function surroundreplace(
   _: Context,
   selections: readonly vscode.Selection[],
   inputOr: InputOr<"input", string>,
@@ -73,7 +73,7 @@ export async function sorroundreplace(
         return false;
       }
       if (inner?.line === outer?.line && inner?.character === outer?.character) {
-        throw new Error("Cursors overlap for a single sorround pair range");
+        throw new Error("Cursors overlap for a single surround pair range");
       }
       return;
     });
@@ -94,10 +94,10 @@ export async function sorroundreplace(
 }
 
 /**
- * Delete stuff sorround
+ * Delete stuff surround
  *
  */
-export async function sorrounddelete(
+export async function surrounddelete(
   _: Context,
   inputOr: InputOr<"input", string>,
 ) {
@@ -136,7 +136,7 @@ export async function sorrounddelete(
         return false;
       }
       if (inner?.line === outer?.line && inner?.character === outer?.character) {
-        throw new Error("Cursors overlap for a single sorround pair range");
+        throw new Error("Cursors overlap for a single surround pair range");
       }
       return;
     });
@@ -157,10 +157,10 @@ export async function sorrounddelete(
 }
 
 /**
- * Add stuff sorround
+ * Add stuff surround
  *
  */
-export async function sorround(
+export async function surround(
   _: Context,
   selections: readonly vscode.Selection[],
   register: RegisterOr<"dquote", Register.Flags.CanRead>,

@@ -647,16 +647,16 @@
                   "command": "dance.seek.enclosing"
                 },
                 "s": {
-                  "text": "Sorround add",
-                  "command": "dance.match.sorround"
+                  "text": "Surround add",
+                  "command": "dance.match.surround"
                 },
                 "r": {
-                  "text": "Sorround replace",
-                  "command": "dance.match.sorroundreplace"
+                  "text": "Surround replace",
+                  "command": "dance.match.surroundreplace"
                 },
                 "d": {
-                  "text": "Sorround delete",
-                  "command": "dance.match.sorrounddelete"
+                  "text": "Surround delete",
+                  "command": "dance.match.surrounddelete"
                 },
                 "a": {
                   "text": "Select around object",
@@ -1305,18 +1305,18 @@
         "category": "Dance"
       },
       {
-        "command": "dance.match.sorround",
-        "title": "Add stuff sorround",
+        "command": "dance.match.surround",
+        "title": "Add stuff surround",
         "category": "Dance"
       },
       {
-        "command": "dance.match.sorrounddelete",
-        "title": "Delete stuff sorround",
+        "command": "dance.match.surrounddelete",
+        "title": "Delete stuff surround",
         "category": "Dance"
       },
       {
-        "command": "dance.match.sorroundreplace",
-        "title": "Replace stuff sorround",
+        "command": "dance.match.surroundreplace",
+        "title": "Replace stuff surround",
         "category": "Dance"
       },
       {
@@ -2222,15 +2222,15 @@
           "when": "dance.mode == 'normal'"
         },
         {
-          "command": "dance.match.sorround",
+          "command": "dance.match.surround",
           "when": "dance.mode == 'normal'"
         },
         {
-          "command": "dance.match.sorrounddelete",
+          "command": "dance.match.surrounddelete",
           "when": "dance.mode == 'normal'"
         },
         {
-          "command": "dance.match.sorroundreplace",
+          "command": "dance.match.surroundreplace",
           "when": "dance.mode == 'normal'"
         },
         {

@@ -53,9 +53,9 @@
     <tr><td><a href="#history.undo"><code>history.undo</code></a></td><td>Undo</td><td><code>U</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>U</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="#history.undo.selections"><code>history.undo.selections</code></a></td><td>Undo a change of selections</td><td><code>Alt+U</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
     <tr><td rowspan=1><a href="#keybindings"><code>keybindings</code></a></td><td><a href="#keybindings.setup"><code>keybindings.setup</code></a></td><td>Set up Dance keybindings</td><td></td></tr>
-    <tr><td rowspan=3><a href="#match"><code>match</code></a></td><td><a href="#match.sorround"><code>match.sorround</code></a></td><td>Add stuff sorround</td><td></td></tr>
-    <tr><td><a href="#match.sorrounddelete"><code>match.sorrounddelete</code></a></td><td>Delete stuff sorround</td><td></td></tr>
-    <tr><td><a href="#match.sorroundreplace"><code>match.sorroundreplace</code></a></td><td>Replace stuff sorround</td><td></td></tr>
+    <tr><td rowspan=3><a href="#match"><code>match</code></a></td><td><a href="#match.surround"><code>match.surround</code></a></td><td>Add stuff surround</td><td></td></tr>
+    <tr><td><a href="#match.surrounddelete"><code>match.surrounddelete</code></a></td><td>Delete stuff surround</td><td></td></tr>
+    <tr><td><a href="#match.surroundreplace"><code>match.surroundreplace</code></a></td><td>Replace stuff surround</td><td></td></tr>
     <tr><td rowspan=8><a href="#misc"><code>misc</code></a></td><td><a href="#cancel"><code>cancel</code></a></td><td>Cancel Dance operation</td><td><code>Escape</code> (<code>editorTextFocus && dance.mode == 'normal' && !dance.isRecording && !markersNavigationVisible</code>)<code>Escape</code> (<code>editorTextFocus && dance.mode == 'input'</code>)</td></tr>
     <tr><td><a href="#changeInput"><code>changeInput</code></a></td><td>Change current input</td><td></td></tr>
     <tr><td><a href="#ignore"><code>ignore</code></a></td><td>Ignore key</td><td></td></tr>
@@ -616,31 +616,31 @@ Match menu.
 | Show match menu         | `m` (normal) | `[".openMenu", { menu: "match" }]` |
 | Show match menu         | `m` (visual) | `[".openMenu", { menu: "match" }]` |
 
-<a name="match.sorroundreplace" />
+<a name="match.surroundreplace" />
 
-### [`match.sorroundreplace`](./match.ts#L22-L30)
+### [`match.surroundreplace`](./match.ts#L22-L30)
 
-Replace stuff sorround
-
-
-This command:
-- takes an input `input` of type `string`.
-
-<a name="match.sorrounddelete" />
-
-### [`match.sorrounddelete`](./match.ts#L96-L103)
-
-Delete stuff sorround
+Replace stuff surround
 
 
 This command:
 - takes an input `input` of type `string`.
 
-<a name="match.sorround" />
+<a name="match.surrounddelete" />
 
-### [`match.sorround`](./match.ts#L159-L168)
+### [`match.surrounddelete`](./match.ts#L96-L103)
 
-Add stuff sorround
+Delete stuff surround
+
+
+This command:
+- takes an input `input` of type `string`.
+
+<a name="match.surround" />
+
+### [`match.surround`](./match.ts#L159-L168)
+
+Add stuff surround
 
 
 This command:

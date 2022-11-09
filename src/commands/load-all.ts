@@ -189,9 +189,9 @@ import {
 } from "./keybindings";
 
 import {
-  sorround as match_sorround,
-  sorrounddelete as match_sorrounddelete,
-  sorroundreplace as match_sorroundreplace,
+  surround as match_surround,
+  surrounddelete as match_surrounddelete,
+  surroundreplace as match_surroundreplace,
 } from "./match";
 
 import {
@@ -434,19 +434,19 @@ export const commands: Commands = function () {
       (_, argument) => _.runAsync((_) => keybindings_setup(_, getRegister(_, argument, "dquote", Register.Flags.CanWrite))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.match.sorround": new CommandDescriptor(
-      "dance.match.sorround",
-      (_, argument) => _.runAsync((_) => match_sorround(_, _.selections, getRegister(_, argument, "dquote", Register.Flags.CanRead), getInputOr("input", argument))),
+    "dance.match.surround": new CommandDescriptor(
+      "dance.match.surround",
+      (_, argument) => _.runAsync((_) => match_surround(_, _.selections, getRegister(_, argument, "dquote", Register.Flags.CanRead), getInputOr("input", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.match.sorrounddelete": new CommandDescriptor(
-      "dance.match.sorrounddelete",
-      (_, argument) => _.runAsync((_) => match_sorrounddelete(_, getInputOr("input", argument))),
+    "dance.match.surrounddelete": new CommandDescriptor(
+      "dance.match.surrounddelete",
+      (_, argument) => _.runAsync((_) => match_surrounddelete(_, getInputOr("input", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.match.sorroundreplace": new CommandDescriptor(
-      "dance.match.sorroundreplace",
-      (_, argument) => _.runAsync((_) => match_sorroundreplace(_, _.selections, getInputOr("input", argument))),
+    "dance.match.surroundreplace": new CommandDescriptor(
+      "dance.match.surroundreplace",
+      (_, argument) => _.runAsync((_) => match_surroundreplace(_, _.selections, getInputOr("input", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "dance.modes.set": new CommandDescriptor(

@@ -484,17 +484,17 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   command: "dance.seek.enclosing",
                 },
                 "s": {
-                  text: "Sorround add",
-                  command: "dance.match.sorround",
+                  text: "Surround add",
+                  command: "dance.match.surround",
                 },
                 "r": {
-                  text: "Sorround replace",
-                  command: "dance.match.sorroundreplace",
+                  text: "Surround replace",
+                  command: "dance.match.surroundreplace",
                   // args: [{ input: "\\((?#inner)\\)" }],
                 },
                 "d": {
-                  text: "Sorround delete",
-                  command: "dance.match.sorrounddelete",
+                  text: "Surround delete",
+                  command: "dance.match.surrounddelete",
                   // args: [{ input: "\\((?#inner)\\)" }],
                 },
                 "a": {
