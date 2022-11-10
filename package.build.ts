@@ -571,7 +571,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 // This is a dirty hack. Otherwise vscode will think its the same as lowecase p
                 // Any other symbol would also work, but this one is invisible
                 "P​": {
-                  text: "Paste clipboard after selections",
+                  text: "Paste clipboard before selections",
                   command: "dance.edit.insert",
                   args: [{
                     handleNewLine: true,

@@ -715,7 +715,7 @@
                   ]
                 },
                 "P​": {
-                  "text": "Paste clipboard after selections",
+                  "text": "Paste clipboard before selections",
                   "command": "dance.edit.insert",
                   "args": [
                     {
