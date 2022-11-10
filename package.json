@@ -3675,6 +3675,22 @@
         }
       },
       {
+        "key": "Ctrl+C",
+        "when": "editorTextFocus && dance.mode == 'normal'",
+        "command": "editor.action.commentLine",
+        "args": {
+          "$exclude": []
+        }
+      },
+      {
+        "key": "Ctrl+C",
+        "when": "editorTextFocus && dance.mode == 'visual'",
+        "command": "editor.action.commentLine",
+        "args": {
+          "$exclude": []
+        }
+      },
+      {
         "key": "Shift+;",
         "when": "editorTextFocus && dance.mode == 'normal'",
         "command": "workbench.action.showCommands",

@@ -13,6 +13,7 @@ import { ArgumentError, CancellationError, InputError } from "../utils/errors";
  * | Keybinding                     | Command                                      |
  * | ------------------------------ | -------------------------------------------- |
  * | `s-;` (normal), `s-;` (visual) | `["workbench.action.showCommands", { ... }]` |
+ * | `c-c` (normal), `c-c` (visual) | `["editor.action.commentLine", { ... }]` |
  */
 declare module "./misc";
 

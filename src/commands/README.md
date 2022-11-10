@@ -657,10 +657,11 @@ commands:
 | Keybinding                     | Command                                      |
 | ------------------------------ | -------------------------------------------- |
 | `s-;` (normal), `s-;` (visual) | `["workbench.action.showCommands", { ... }]` |
+| `c-c` (normal), `c-c` (visual) | `["editor.action.commentLine", { ... }]` |
 
 <a name=".cancel" />
 
-### [`cancel`](./misc.ts#L19-L24)
+### [`cancel`](./misc.ts#L20-L25)
 
 Cancel Dance operation.
 
@@ -672,7 +673,7 @@ Default keybinding: `escape` (normal, !recording, "!markersNavigationVisible"), 
 
 <a name=".ignore" />
 
-### [`ignore`](./misc.ts#L30-L33)
+### [`ignore`](./misc.ts#L31-L34)
 
 Ignore key.
 
@@ -681,7 +682,7 @@ This command:
 
 <a name=".run" />
 
-### [`run`](./misc.ts#L39-L148)
+### [`run`](./misc.ts#L40-L149)
 
 Run code.
 
@@ -791,7 +792,7 @@ This command:
 
 <a name=".selectRegister" />
 
-### [`selectRegister`](./misc.ts#L184-L198)
+### [`selectRegister`](./misc.ts#L185-L199)
 
 Select register for next command.
 
@@ -808,7 +809,7 @@ Default keybinding: `"` (normal), `"` (visual)
 
 <a name=".updateRegister" />
 
-### [`updateRegister`](./misc.ts#L214-L225)
+### [`updateRegister`](./misc.ts#L215-L226)
 
 Update the contents of a register.
 
@@ -819,7 +820,7 @@ This command:
 
 <a name=".updateCount" />
 
-### [`updateCount`](./misc.ts#L251-L280)
+### [`updateCount`](./misc.ts#L252-L281)
 
 Update Dance count.
 
@@ -848,7 +849,7 @@ This command:
 
 <a name=".openMenu" />
 
-### [`openMenu`](./misc.ts#L308-L330)
+### [`openMenu`](./misc.ts#L309-L331)
 
 Open menu.
 
@@ -872,7 +873,7 @@ This command:
 
 <a name=".changeInput" />
 
-### [`changeInput`](./misc.ts#L371-L385)
+### [`changeInput`](./misc.ts#L372-L386)
 
 Change current input.
 
