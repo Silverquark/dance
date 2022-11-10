@@ -338,8 +338,6 @@ export function copyIndentation(
  *
  * `select` is deprecated; use `shift` with `"select"` instead.
  *
- * @keys `s-a-o` (normal), `s-a-o` (visual)
- *
  * #### Additional keybindings
  *
  * | Title                                      | Identifier             | Keybinding                     | Commands                                                                          |
@@ -378,8 +376,6 @@ export function newLine_above(
  * keep the current selections.
  *
  * `select` is deprecated; use `shift` with `"select"` instead.
- *
- * @keys `a-o` (normal), `a-o` (visual)
  *
  * #### Additional keybindings
  *

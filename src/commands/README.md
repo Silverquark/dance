@@ -23,8 +23,8 @@
     <tr><td><a href="#edit.deindent.withIncomplete"><code>edit.deindent.withIncomplete</code></a></td><td>Deindent selected lines (including incomplete indent)</td><td><code>Shift+,</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+,</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="./edit.ts#L39"><code>edit.delete</code></a></td><td>Delete</td><td><code>Alt+D</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+D</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="./edit.ts#L40"><code>edit.delete-insert</code></a></td><td>Delete and switch to Insert</td><td><code>Alt+C</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+C</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
-    <tr><td><a href="./edit.ts#L347"><code>edit.newLine.above.insert</code></a></td><td>Insert new line above and switch to insert</td><td><code>Shift+O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
-    <tr><td><a href="./edit.ts#L388"><code>edit.newLine.below.insert</code></a></td><td>Insert new line below and switch to insert</td><td><code>O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L345"><code>edit.newLine.above.insert</code></a></td><td>Insert new line above and switch to insert</td><td><code>Shift+O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L384"><code>edit.newLine.below.insert</code></a></td><td>Insert new line below and switch to insert</td><td><code>O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="./edit.ts#L36"><code>edit.paste.after</code></a></td><td>Paste after</td><td><code>P</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>P</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="./edit.ts#L38"><code>edit.paste.after.select</code></a></td><td>Paste after and select</td><td><code>Alt+P</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+P</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="./edit.ts#L35"><code>edit.paste.before</code></a></td><td>Paste before</td><td><code>Shift+P</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+P</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
@@ -38,8 +38,8 @@
     <tr><td><a href="#edit.insert"><code>edit.insert</code></a></td><td>Insert contents of register</td><td><code>Shift+Alt+R</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
     <tr><td><a href="#edit.join"><code>edit.join</code></a></td><td>Join lines</td><td><code>Shift+J</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+J</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td><a href="#edit.join.select"><code>edit.join.select</code></a></td><td>Join lines and select inserted separators</td><td><code>Shift+Alt+J</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-    <tr><td><a href="#edit.newLine.above"><code>edit.newLine.above</code></a></td><td>Insert new line above each selection</td><td><code>Shift+Alt+O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Alt+O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
-    <tr><td><a href="#edit.newLine.below"><code>edit.newLine.below</code></a></td><td>Insert new line below each selection</td><td><code>Alt+O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.newLine.above"><code>edit.newLine.above</code></a></td><td>Insert new line above each selection</td><td></td></tr>
+    <tr><td><a href="#edit.newLine.below"><code>edit.newLine.below</code></a></td><td>Insert new line below each selection</td><td></td></tr>
     <tr><td><a href="#edit.replaceCharacters"><code>edit.replaceCharacters</code></a></td><td>Replace characters</td><td><code>R</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>R</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
     <tr><td rowspan=11><a href="#history"><code>history</code></a></td><td><a href="./history.ts#L58"><code>history.repeat.seek</code></a></td><td>Repeat last seek</td><td><code>Alt+.</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
     <tr><td><a href="./history.ts#L57"><code>history.repeat.selection</code></a></td><td>Repeat last selection change</td><td></td></tr>
@@ -428,7 +428,7 @@ Default keybinding: `a-&` (normal), `a-&` (visual)
 
 <a name="edit.newLine.above" />
 
-### [`edit.newLine.above`](./edit.ts#L333-L354)
+### [`edit.newLine.above`](./edit.ts#L333-L352)
 
 Insert new line above each selection.
 
@@ -436,7 +436,6 @@ Specify `"shift": "select"` to select the inserted selections, and nothing to
 keep the current selections.
 
 `select` is deprecated; use `shift` with `"select"` instead.
-
 
 #### Additional keybindings
 
@@ -449,11 +448,9 @@ This command:
 - takes an argument `select` of type `boolean`.
 - takes an argument `shift` of type `Shift`.
 
-Default keybinding: `s-a-o` (normal), `s-a-o` (visual)
-
 <a name="edit.newLine.below" />
 
-### [`edit.newLine.below`](./edit.ts#L374-L395)
+### [`edit.newLine.below`](./edit.ts#L372-L391)
 
 Insert new line below each selection.
 
@@ -461,7 +458,6 @@ Specify `"shift": "select"` to select the inserted selections, and nothing to
 keep the current selections.
 
 `select` is deprecated; use `shift` with `"select"` instead.
-
 
 #### Additional keybindings
 
@@ -473,8 +469,6 @@ This command:
 - may be repeated with a given number of repetitions.
 - takes an argument `select` of type `boolean`.
 - takes an argument `shift` of type `Shift`.
-
-Default keybinding: `a-o` (normal), `a-o` (visual)
 
 ## [`history`](./history.ts)
 

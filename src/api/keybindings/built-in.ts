@@ -159,18 +159,6 @@ const builtinKeybindings = [
     command: "dance.edit.join.select",
   },
   {
-    key: "Shift+Alt+O",
-    when: "editorTextFocus && dance.mode == 'normal'",
-    title: "Insert new line above each selection",
-    command: "dance.edit.newLine.above",
-  },
-  {
-    key: "Shift+Alt+O",
-    when: "editorTextFocus && dance.mode == 'visual'",
-    title: "Insert new line above each selection",
-    command: "dance.edit.newLine.above",
-  },
-  {
     key: "Shift+O",
     when: "editorTextFocus && dance.mode == 'normal'",
     title: "Insert new line above and switch to insert",
@@ -181,18 +169,6 @@ const builtinKeybindings = [
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Insert new line above and switch to insert",
     command: "dance.edit.newLine.above.insert",
-  },
-  {
-    key: "Alt+O",
-    when: "editorTextFocus && dance.mode == 'normal'",
-    title: "Insert new line below each selection",
-    command: "dance.edit.newLine.below",
-  },
-  {
-    key: "Alt+O",
-    when: "editorTextFocus && dance.mode == 'visual'",
-    title: "Insert new line below each selection",
-    command: "dance.edit.newLine.below",
   },
   {
     key: "O",
