@@ -426,12 +426,7 @@ export function splitLines(
   document: vscode.TextDocument,
   selections: readonly vscode.Selection[],
   repetitions: number,
-<<<<<<< HEAD
-
   excludeEol: Argument<boolean> = false,
-=======
-  excludeEol: Argument<boolean> = true,
->>>>>>> 7f3474e (fix: match helix for split lines (a-s))
 ) {
   const newSelections = [] as vscode.Selection[],
         lineEnd = excludeEol ? Positions.lineEnd : Positions.lineBreak;

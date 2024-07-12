@@ -442,7 +442,7 @@ const builtinKeybindings = [
   },
   {
     key: "Up",
-    when: "inputFocus && !textInputFocus",
+    when: "editorTextFocus && inputFocus && !textInputFocus",
     command: "dance.changeInput",
     args: {
       action: "previous",
@@ -450,7 +450,7 @@ const builtinKeybindings = [
   },
   {
     key: "Down",
-    when: "inputFocus && !textInputFocus",
+    when: "editorTextFocus && inputFocus && !textInputFocus",
     command: "dance.changeInput",
     args: {
       action: "next",
@@ -833,7 +833,7 @@ const builtinKeybindings = [
     when: "editorTextFocus && dance.mode == 'normal'",
     command: "editor.action.commentLine",
     args: {
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -841,7 +841,7 @@ const builtinKeybindings = [
     when: "editorTextFocus && dance.mode == 'visual'",
     command: "editor.action.commentLine",
     args: {
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -849,7 +849,7 @@ const builtinKeybindings = [
     when: "editorTextFocus && dance.mode == 'normal'",
     command: "workbench.action.showCommands",
     args: {
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -857,7 +857,7 @@ const builtinKeybindings = [
     when: "editorTextFocus && dance.mode == 'visual'",
     command: "workbench.action.showCommands",
     args: {
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -1772,7 +1772,7 @@ const builtinKeybindings = [
     command: "dance.selections.restore.withCurrent",
     args: {
       reverse: true,
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -1902,7 +1902,7 @@ const builtinKeybindings = [
     command: "dance.openMenu",
     args: {
       menu: "space",
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -1912,7 +1912,7 @@ const builtinKeybindings = [
     command: "dance.openMenu",
     args: {
       menu: "space",
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -1922,7 +1922,7 @@ const builtinKeybindings = [
     command: "dance.openMenu",
     args: {
       menu: "view",
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -1932,7 +1932,7 @@ const builtinKeybindings = [
     command: "dance.openMenu",
     args: {
       menu: "view",
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -1943,7 +1943,7 @@ const builtinKeybindings = [
     args: {
       menu: "view",
       locked: true,
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
@@ -1954,7 +1954,7 @@ const builtinKeybindings = [
     args: {
       menu: "view",
       locked: true,
-      "$exclude": [],
+      $exclude: [],
     },
   },
   {
