@@ -3350,7 +3350,7 @@
       },
       {
         "key": "Up",
-        "when": "inputFocus && !textInputFocus",
+        "when": "editorTextFocus && inputFocus && !textInputFocus",
         "command": "dance.changeInput",
         "args": {
           "action": "previous"
@@ -3358,7 +3358,7 @@
       },
       {
         "key": "Down",
-        "when": "inputFocus && !textInputFocus",
+        "when": "editorTextFocus && inputFocus && !textInputFocus",
         "command": "dance.changeInput",
         "args": {
           "action": "next"
